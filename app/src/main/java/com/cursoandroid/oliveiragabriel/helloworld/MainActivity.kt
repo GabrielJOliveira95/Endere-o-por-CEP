@@ -82,8 +82,6 @@ class MainActivity : AppCompatActivity() {
                 txt_cidade?.setText("Cidade: ${body?.localidade}")
                 txt_estado?.setText("Estado: ${body?.uf}")
                 txt_ibge?.setText("IBGE: ${body?.ibge}")
-
-                Toast.makeText(this@MainActivity, "Success", Toast.LENGTH_SHORT).show()
             }
 
 

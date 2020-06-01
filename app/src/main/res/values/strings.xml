@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Endereço via CEP!</string>
+    <string name="app_name">Endereço via CEP</string>
     <string name="digite_o_seu_cep">Digite o seu CEP</string>
     <string name="logradouro">Logradouro:</string>
     <string name="bairro">Bairro:</string>
