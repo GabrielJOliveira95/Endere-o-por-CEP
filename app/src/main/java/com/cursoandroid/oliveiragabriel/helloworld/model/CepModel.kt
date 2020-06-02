@@ -1,4 +1,4 @@
-package com.cursoandroid.oliveiragabriel.helloworld
+package com.cursoandroid.oliveiragabriel.helloworld.model
 
 class CepModel {
 

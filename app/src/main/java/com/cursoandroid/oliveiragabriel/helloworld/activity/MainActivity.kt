@@ -1,4 +1,4 @@
-package com.cursoandroid.oliveiragabriel.helloworld
+package com.cursoandroid.oliveiragabriel.helloworld.activity
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cursoandroid.oliveiragabriel.helloworld.R
+import com.cursoandroid.oliveiragabriel.helloworld.service.CallCep
+import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
