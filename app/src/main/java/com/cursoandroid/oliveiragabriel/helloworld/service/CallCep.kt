@@ -9,8 +9,10 @@ interface CallCep {
 
     @GET("ws/{cep}/json/")
 
-    fun cep(@Path("cep") cep: String): Call<CepModel>
+    fun buscarPorCepApi(@Path("cep") cep: String): Call<CepModel>
 
+    @GET("ws/{endereco}/json")
+    fun buscarCepApi(@Path("endereco") endereco: String): Call<List<CepModel>>
 
 
 }
