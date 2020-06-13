@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import com.cursoandroid.oliveiragabriel.helloworld.R
 import com.cursoandroid.oliveiragabriel.helloworld.service.CallCep
 import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         txt_ibge = findViewById(R.id.txt_ibge)
 
 
-        val editText = findViewById<EditText>(R.id.cep)
+        val editText = findViewById<EditText>(R.id.cepEdit)
         val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         btn.setOnClickListener(View.OnClickListener {
 

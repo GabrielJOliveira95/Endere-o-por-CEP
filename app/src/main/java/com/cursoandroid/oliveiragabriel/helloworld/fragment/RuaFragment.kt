@@ -67,13 +67,6 @@ class RuaFragment : Fragment() {
         val editTextRua = view.findViewById<EditText>(R.id.editTextRua)
         val editTextCidade = view.findViewById<EditText>(R.id.editTextCidade)
 
-        //RecyclerView
-        val cepModelist: MutableList<CepModel> = mutableListOf<CepModel>()
-
-
-
-
-
 
         //Spinner configuration
         val adapter =
@@ -117,11 +110,9 @@ class RuaFragment : Fragment() {
                     val recyclerViewCep = view?.findViewById<RecyclerView>(R.id.recyclerview)
 
                     recyclerViewCep!!.visibility = View.VISIBLE
-
-
-                    recyclerViewCep?.adapter = AdapterCep(cepList)
-                    recyclerViewCep?.layoutManager = LinearLayoutManager(this@RuaFragment.context)
-                    recyclerViewCep?.hasFixedSize()
+                    recyclerViewCep.adapter = AdapterCep(cepList)
+                    recyclerViewCep.layoutManager = LinearLayoutManager(this@RuaFragment.context)
+                    recyclerViewCep.hasFixedSize()
 
 
                 }
@@ -133,19 +124,6 @@ class RuaFragment : Fragment() {
         })
 
     }
-
-
-    fun recyclerViewCreate(cepList: List<CepModel>?) {
-
-        val recyclerViewCep = view?.findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerViewCep?.adapter = AdapterCep(cepList)
-        recyclerViewCep?.layoutManager = LinearLayoutManager(this@RuaFragment.context)
-        recyclerViewCep?.hasFixedSize()
-
-    }
-
-
-
 
 
 

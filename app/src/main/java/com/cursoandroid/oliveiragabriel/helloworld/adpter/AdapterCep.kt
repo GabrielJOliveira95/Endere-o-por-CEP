@@ -38,8 +38,8 @@ class AdapterCep(val cepModel: List<CepModel>?) : RecyclerView.Adapter<RecyclerV
             holder.layout_bairro.text = "Bairro: " + resultados.bairro
             holder.layout_cidade.text = "Cidade: " + resultados.localidade
             holder.layout_estado.text = "Estado: " + resultados.uf
-            holder.layout_ibge.text = "IBGE:" + resultados.ibge
-            holder.layout_cep.text = "CEP:" + resultados.cep
+            holder.layout_ibge.text = "IBGE: " + resultados.ibge
+            holder.layout_cep.text = "CEP: " + resultados.cep
         }
 
     }

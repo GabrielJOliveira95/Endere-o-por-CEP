@@ -25,10 +25,10 @@
             android:text="@string/pesquisar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cep" />
+            app:layout_constraintTop_toBottomOf="@+id/cepEdit" />
 
         <EditText
-            android:id="@+id/cep"
+            android:id="@+id/cepEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="99dp"
