@@ -15,6 +15,7 @@ import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
 import com.cursoandroid.oliveiragabriel.helloworld.model.Erro
 import com.cursoandroid.oliveiragabriel.helloworld.service.CallCep
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_cep.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +32,8 @@ class CepFragment : Fragment() {
     var txt_cidade: TextView? = null
     var txt_estado: TextView? = null
     var txt_ibge: TextView? = null
-
+    var txtLayoutCep: TextInputLayout? = null
+    lateinit var editText: EditText
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,21 +46,13 @@ class CepFragment : Fragment() {
         txt_cidade = view.findViewById(R.id.txt_cidade)
         txt_estado = view.findViewById(R.id.txt_estado)
         txt_ibge = view.findViewById(R.id.txt_ibge)
+        editText = view.findViewById(R.id.cepEdit)
+        txtLayoutCep = view.findViewById(R.id.textInputLayoutCep)
 
-
-        val editText = view.findViewById<EditText>(R.id.cepEdit)
         val fab = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
         btn.setOnClickListener(View.OnClickListener {
+            validar()
 
-            val cep = editText.text.toString()
-
-            if (cep == "") {
-                Toast.makeText(this@CepFragment.context, "Digite um CEP", Toast.LENGTH_LONG).show()
-            } else {
-                buscaCep(cep)
-
-
-            }
         })
 
         fab.setOnClickListener(View.OnClickListener {
@@ -74,6 +68,7 @@ class CepFragment : Fragment() {
     }
 
 
+    //Função para localizar o endereço com base no CEP
     fun buscaCep(cep: String) {
 
         val retrofit: Retrofit = Retrofit.Builder()
@@ -109,6 +104,7 @@ class CepFragment : Fragment() {
         )
     }
 
+    //Função que verifica se o CEP é válido
     fun erro(cep: String): Boolean {
 
         val retrofit: Retrofit = Retrofit.Builder()
@@ -116,13 +112,13 @@ class CepFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        var boolean: Boolean = false
+        var boolean = false
 
         val callErro = retrofit.create(CallCep::class.java)
         val call: Call<Erro> = callErro.erro(cep)
         call.enqueue(object : Callback<Erro> {
             override fun onFailure(call: Call<Erro>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onResponse(call: Call<Erro>, response: Response<Erro>) {
@@ -144,6 +140,22 @@ class CepFragment : Fragment() {
         })
 
         return boolean
+    }
+
+
+    fun validar() {
+
+
+        if (editText.text.toString().isEmpty() || editText.text.toString().length < 8) {
+            txtLayoutCep?.isErrorEnabled
+            txtLayoutCep?.error = "Digite um Cep válido"
+
+        } else {
+            txtLayoutCep?.isErrorEnabled = false
+            buscaCep(editText.text.toString())
+        }
+
+
     }
 
 

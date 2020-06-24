@@ -86,6 +86,8 @@ class RuaFragment : Fragment() {
         val uf: String = spinner.selectedItem.toString()
         val rua: String = editTextRua.text.toString()
         val cidade: String = editTextCidade.text.toString()
+
+
         val url = "$uf/$cidade/$rua"
         buscarEndereco(url)
 
@@ -107,8 +109,12 @@ class RuaFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     val cepList: List<CepModel>? = response.body()
-                    val recyclerViewCep = view?.findViewById<RecyclerView>(R.id.recyclerview)
 
+                    if (cepList.isNullOrEmpty()){
+                        Toast.makeText(this@RuaFragment.context, "Endereço não localizado", Toast.LENGTH_LONG).show()
+                    }
+
+                    val recyclerViewCep = view?.findViewById<RecyclerView>(R.id.recyclerview)
                     recyclerViewCep!!.visibility = View.VISIBLE
                     recyclerViewCep.adapter = AdapterCep(cepList)
                     recyclerViewCep.layoutManager = LinearLayoutManager(this@RuaFragment.context)
@@ -124,6 +130,10 @@ class RuaFragment : Fragment() {
         })
 
     }
+
+
+
+
 
 
 
