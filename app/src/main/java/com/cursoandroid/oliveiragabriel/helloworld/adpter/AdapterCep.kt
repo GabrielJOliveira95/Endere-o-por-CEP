@@ -6,17 +6,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.oliveiragabriel.helloworld.R
-import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
+import com.cursoandroid.oliveiragabriel.helloworld.model.EnderecoApiModel
 
 
-class AdapterCep(val cepModel: List<CepModel>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterCep(val enderecoApiModel: List<EnderecoApiModel>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
 
-    var list: List<CepModel>? = listOf()
+    var list: List<EnderecoApiModel>? = listOf()
 
     init {
-        this.list = cepModel
+        this.list = enderecoApiModel
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

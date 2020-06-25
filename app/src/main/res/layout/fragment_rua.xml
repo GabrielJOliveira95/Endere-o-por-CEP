@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/design_default_color_background"
-        tools:context=".fragment.RuaFragment">
+        tools:context=".fragments.RuaFragment">
 
         <ImageView
             android:id="@+id/imageView"
@@ -24,46 +24,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logorua" />
 
-        <EditText
-            android:id="@+id/editTextRua"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:hint="Nome da rua"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="46dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
-
-        <EditText
-            android:id="@+id/editTextCidade"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Cidade"
-            android:inputType="textPostalAddress"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRua" />
 
         <Button
             android:id="@+id/btn_pesquisar_cep"
@@ -77,20 +46,21 @@
             android:background="@color/colorAccent"
             android:text="@string/pesquisar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCidade" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCidade" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="46dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="UF"
+            android:text="Estado"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toStartOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/editTextRua" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRua" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -124,6 +94,49 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_pesquisar_cep" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutCidade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRua">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cidade"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutRua"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End. completo ou parcial"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

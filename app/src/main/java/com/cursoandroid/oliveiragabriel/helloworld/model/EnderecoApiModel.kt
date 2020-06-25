@@ -1,6 +1,6 @@
 package com.cursoandroid.oliveiragabriel.helloworld.model
 
-class CepModel{
+class EnderecoApiModel{
 
     var cep = ""
     var logradouro = ""

@@ -1,4 +1,4 @@
-package com.cursoandroid.oliveiragabriel.helloworld.fragment
+package com.cursoandroid.oliveiragabriel.helloworld.fragments
 
 
 import android.os.Bundle
@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.cursoandroid.oliveiragabriel.helloworld.R
-import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
+import com.cursoandroid.oliveiragabriel.helloworld.model.EnderecoApiModel
 import com.cursoandroid.oliveiragabriel.helloworld.model.Erro
 import com.cursoandroid.oliveiragabriel.helloworld.service.CallCep
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -77,15 +77,18 @@ class CepFragment : Fragment() {
             .build()
 
         val callCep = retrofit.create(CallCep::class.java)
-        val call: Call<CepModel> = callCep.buscarPorCepApi(cep)
+        val call: Call<EnderecoApiModel> = callCep.buscarPorCepApi(cep)
 
-        call.enqueue(object : Callback<CepModel> {
-            override fun onFailure(call: Call<CepModel>, t: Throwable) {
+        call.enqueue(object : Callback<EnderecoApiModel> {
+            override fun onFailure(call: Call<EnderecoApiModel>, t: Throwable) {
                 Toast.makeText(this@CepFragment.context, t.message, Toast.LENGTH_SHORT).show()
             }
 
 
-            override fun onResponse(call: Call<CepModel>, response: Response<CepModel>) {
+            override fun onResponse(
+                call: Call<EnderecoApiModel>,
+                response: Response<EnderecoApiModel>
+            ) {
                 val body = response.body()
 
                 if (erro(cep)) {

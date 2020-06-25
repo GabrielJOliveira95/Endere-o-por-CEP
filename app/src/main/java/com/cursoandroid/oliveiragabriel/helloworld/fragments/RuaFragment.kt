@@ -1,4 +1,4 @@
-package com.cursoandroid.oliveiragabriel.helloworld.fragment
+package com.cursoandroid.oliveiragabriel.helloworld.fragments
 
 
 import android.os.Bundle
@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.oliveiragabriel.helloworld.R
 import com.cursoandroid.oliveiragabriel.helloworld.adpter.AdapterCep
-import com.cursoandroid.oliveiragabriel.helloworld.model.CepModel
+import com.cursoandroid.oliveiragabriel.helloworld.model.EnderecoApiModel
 import com.cursoandroid.oliveiragabriel.helloworld.service.CallCep
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_rua.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * A simple [Fragment] subclass.
  */
 class RuaFragment : Fragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,11 +68,12 @@ class RuaFragment : Fragment() {
         val btn = view.findViewById<Button>(R.id.btn_pesquisar_cep)
         val editTextRua = view.findViewById<EditText>(R.id.editTextRua)
         val editTextCidade = view.findViewById<EditText>(R.id.editTextCidade)
-
+        val textInputLayoutCidade = view.findViewById<TextInputLayout>(R.id.textInputLayoutCidade)
+        val textInputLayoutRua = view.findViewById<TextInputLayout>(R.id.textInputLayoutRua)
 
         //Spinner configuration
         val adapter =
-            ArrayAdapter(this@RuaFragment. context, android.R.layout.simple_spinner_item, estados)
+            ArrayAdapter(this@RuaFragment.context, android.R.layout.simple_spinner_item, estados)
         spinner.adapter = adapter
 
         btn.setOnClickListener {
@@ -87,9 +90,28 @@ class RuaFragment : Fragment() {
         val rua: String = editTextRua.text.toString()
         val cidade: String = editTextCidade.text.toString()
 
+        when {
+            editTextRua.text.toString().equals("") -> {
+                textInputLayoutRua?.isErrorEnabled
+                textInputLayoutRua?.error = "Digite o endereço"
+                textInputLayoutCidade?.isErrorEnabled = false
 
-        val url = "$uf/$cidade/$rua"
-        buscarEndereco(url)
+
+            }
+            editTextCidade.text.toString().equals("") -> {
+                textInputLayoutRua?.isErrorEnabled = false
+                textInputLayoutCidade?.isErrorEnabled
+                textInputLayoutCidade?.error = "Digite a cidade"
+
+            }
+            else -> {
+                textInputLayoutRua?.isErrorEnabled = false
+                textInputLayoutCidade?.isErrorEnabled = false
+                val url = "$uf/$cidade/$rua"
+                buscarEndereco(url)
+            }
+        }
+
 
     }
 
@@ -102,21 +124,25 @@ class RuaFragment : Fragment() {
 
         val callCep: CallCep = retrofit.create(CallCep::class.java)
         val callEndereco = callCep.buscarCepApi(url)
-        callEndereco.enqueue(object : Callback<List<CepModel>> {
+        callEndereco.enqueue(object : Callback<List<EnderecoApiModel>> {
             override fun onResponse(
-                call: Call<List<CepModel>>,
-                response: Response<List<CepModel>>
+                call: Call<List<EnderecoApiModel>>,
+                response: Response<List<EnderecoApiModel>>
             ) {
                 if (response.isSuccessful) {
-                    val cepList: List<CepModel>? = response.body()
+                    val enderecoApiList: List<EnderecoApiModel>? = response.body()
 
-                    if (cepList.isNullOrEmpty()){
-                        Toast.makeText(this@RuaFragment.context, "Endereço não localizado", Toast.LENGTH_LONG).show()
+                    if (enderecoApiList.isNullOrEmpty()) {
+                        Toast.makeText(
+                            this@RuaFragment.context,
+                            "Endereço não localizado",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     val recyclerViewCep = view?.findViewById<RecyclerView>(R.id.recyclerview)
                     recyclerViewCep!!.visibility = View.VISIBLE
-                    recyclerViewCep.adapter = AdapterCep(cepList)
+                    recyclerViewCep.adapter = AdapterCep(enderecoApiList)
                     recyclerViewCep.layoutManager = LinearLayoutManager(this@RuaFragment.context)
                     recyclerViewCep.hasFixedSize()
 
@@ -124,18 +150,12 @@ class RuaFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<List<CepModel>>, t: Throwable) {
+            override fun onFailure(call: Call<List<EnderecoApiModel>>, t: Throwable) {
 
             }
         })
 
     }
-
-
-
-
-
-
 
 
 }

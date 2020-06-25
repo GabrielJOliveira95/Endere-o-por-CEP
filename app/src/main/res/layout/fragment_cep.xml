@@ -131,7 +131,8 @@
                 android:gravity="center"
                 android:hint="@string/digite_o_seu_cep"
                 android:inputType="number"
-                android:maxLength="8" />
+                android:maxLength="8"
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
