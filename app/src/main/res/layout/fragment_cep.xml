@@ -4,14 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/background_light">
-
+        android:layout_height="wrap_content">
         <Button
             android:id="@+id/btnCep"
             android:layout_width="0dp"
@@ -21,7 +18,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="100dp"
             android:layout_marginRight="100dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/ripple_button"
             android:text="@string/pesquisar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,12 +27,13 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="219dp"
+            android:layout_height="210dp"
+            android:background="@color/design_default_color_background"
             android:contentDescription="@string/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logorua" />
 
         <TextView
             android:id="@+id/txt_rua"
@@ -99,16 +97,18 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="185dp"
+            android:layout_marginTop="175dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/ic_delete_sweep_black_24dp"
             android:clickable="true"
+            android:focusable="true"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnCep"
+            app:layout_constraintVertical_bias="0.55"
             app:srcCompat="@drawable/ic_delete_sweep_black_24dp" />
 
         <com.google.android.material.textfield.TextInputLayout

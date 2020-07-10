@@ -27,13 +27,14 @@ import retrofit2.converter.gson.GsonConverterFactory
  * A simple [Fragment] subclass.
  */
 class CepFragment : Fragment() {
-    var txt_rua: TextView? = null
-    var txt_bairo: TextView? = null
-    var txt_cidade: TextView? = null
-    var txt_estado: TextView? = null
-    var txt_ibge: TextView? = null
-    var txtLayoutCep: TextInputLayout? = null
+    lateinit var txt_rua: TextView
+    lateinit var txt_bairo: TextView
+    lateinit var txt_cidade: TextView
+    lateinit var txt_estado: TextView
+    lateinit var txt_ibge: TextView
+    lateinit var txtLayoutCep: TextInputLayout
     lateinit var editText: EditText
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,20 +50,20 @@ class CepFragment : Fragment() {
         editText = view.findViewById(R.id.cepEdit)
         txtLayoutCep = view.findViewById(R.id.textInputLayoutCep)
 
+
         val fab = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        btn.setOnClickListener(View.OnClickListener {
+        btn.setOnClickListener {
             validar()
+        }
 
-        })
-
-        fab.setOnClickListener(View.OnClickListener {
+        fab.setOnClickListener {
             this.txt_rua?.text = ""
             this.txt_bairo?.text = ""
             this.txt_cidade?.text = ""
             this.txt_estado?.text = ""
             this.txt_ibge?.text = ""
             this.cepEdit?.setText("")
-        })
+        }
 
         return view
     }
@@ -150,11 +151,11 @@ class CepFragment : Fragment() {
 
 
         if (editText.text.toString().isEmpty() || editText.text.toString().length < 8) {
-            txtLayoutCep?.isErrorEnabled
-            txtLayoutCep?.error = "Digite um Cep válido"
+            txtLayoutCep.isErrorEnabled
+            txtLayoutCep.error = "Digite um Cep válido"
 
         } else {
-            txtLayoutCep?.isErrorEnabled = false
+            txtLayoutCep.isErrorEnabled = false
             buscaCep(editText.text.toString())
         }
 

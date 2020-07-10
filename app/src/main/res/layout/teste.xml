@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1976D2">
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quarta, 21 de Setembro"
+        android:textSize="22sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/cardview_light_background"
+        />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_below="@+id/txt"
+        android:layout_margin="20dp"
+        android:background="@color/cardview_light_background"
+        />
+
+    <CheckBox
+        android:id="@+id/grama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cortar a Grama"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16sp"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="16sp"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fazer Compras"
+        android:layout_below="@+id/grama"
+        android:textSize="16sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Complete todas as tarefas"
+        android:textSize="16sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        >
+
+    </TextView>
+
+</RelativeLayout>

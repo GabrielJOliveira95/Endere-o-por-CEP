@@ -7,5 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="BackGroundDefault">
+        <item name="android:background">@color/backGroundPadrao</item>
+    </style>
 </resources>

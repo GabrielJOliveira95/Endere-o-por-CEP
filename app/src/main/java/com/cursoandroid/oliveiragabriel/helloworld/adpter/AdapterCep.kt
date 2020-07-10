@@ -9,7 +9,7 @@ import com.cursoandroid.oliveiragabriel.helloworld.R
 import com.cursoandroid.oliveiragabriel.helloworld.model.EnderecoApiModel
 
 
-class AdapterCep(val enderecoApiModel: List<EnderecoApiModel>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterCep(enderecoApiModel: List<EnderecoApiModel>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
 

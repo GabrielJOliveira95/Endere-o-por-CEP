@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0f
 
+
         val smartTabLayout = findViewById<SmartTabLayout>(R.id.viewpagertab)
         val viewPager = findViewById<ViewPager>(R.id.viewpager)
 
